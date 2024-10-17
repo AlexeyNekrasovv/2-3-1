@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars</title>
+    <style>
+        table th, table td {
+            padding: 5px;
+        }
+
+        .row {
+            font-style: italic;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<h1>Cars</h1>
+<table border="1">
+    <tr>
+        <th>No</th>
+        <th>Model</th>
+        <th>Year</th>
+        <th>Series</th>
+    </tr>
+    <tr th:each="car, iterStat : ${cars}" class="row">
+        <td th:text="${iterStat.index + 1}">1</td> <!-- Используйте iterStat для индекса -->
+        <td th:text="${car.model}">Model</td> <!-- Убедитесь, что ваш объект car имеет публичные геттеры -->
+        <td th:text="${car.year}">Year</td>
+        <td th:text="${car.series}">Series</td>
+    </tr>
+</table>
+</body>
+</html>
