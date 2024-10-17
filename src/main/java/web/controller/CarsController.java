@@ -17,7 +17,7 @@ public class CarsController {
 
     @GetMapping("/cars")
     public String printCars(@RequestParam(value = "count", required = false) String count, ModelMap model) {
-        // Добавляем cars в модель вне зависимости от count
+
         if (count == null || Integer.valueOf(count) > 5) {
             model.addAttribute("cars", carService.carsList);
         } else {
@@ -25,7 +25,7 @@ public class CarsController {
                 int carCount = Integer.valueOf(count);
                 model.addAttribute("cars", carService.getCars(carCount));
             } catch (NumberFormatException e) {
-                // Обработка ошибки формата числа
+
                 model.addAttribute("cars", carService.carsList);
                 model.addAttribute("error", "Invalid count format. Showing all cars.");
             }

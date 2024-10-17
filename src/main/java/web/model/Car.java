@@ -5,12 +5,12 @@ import java.util.Objects;
 public class Car {
     private String model;
     private int year;
-    private int series;
+    private int number;
 
-    public Car(String model, int year, int series) {
+    public Car(String model, int year, int number) {
         this.model = model;
         this.year = year;
-        this.series = series;
+        this.number = number;
     }
 
     public String getModel() {
@@ -29,12 +29,12 @@ public class Car {
         this.year = year;
     }
 
-    public int getSeries() {
-        return series;
+    public int getNumber() {
+        return number;
     }
 
-    public void setSeries(int series) {
-        this.series = series;
+    public void setNumber(int number) {
+        this.number = number;
     }
 
     @Override
@@ -42,7 +42,7 @@ public class Car {
         return "Car{" +
                 "model='" + model + '\'' +
                 ", year='" + year + '\'' +
-                ", series=" + series +
+                ", number=" + number +
                 '}';
     }
 
@@ -51,11 +51,11 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return series == car.series && Objects.equals(model, car.model) && Objects.equals(year, car.year);
+        return number == car.number && Objects.equals(model, car.model) && Objects.equals(year, car.year);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(model, year, series);
+        return Objects.hash(model, year, number);
     }
 }
