@@ -19,14 +19,19 @@ public class CarServiceImpl implements CarService {
         carsList.add(new Car("VESTA", 2020, 321));
     }
 
-    public List<Car> getCars(int count) {
+    public List<Car> getCars(String count) {
 
-        if (count < 0) {
+        int carCount;
+        try {
+            carCount = Integer.parseInt(count);
+        } catch (NumberFormatException e) {
+            carCount = carsList.size();
+        }
+
+        if (carCount < 0) {
             throw new IllegalArgumentException("Count must be positive.");
         }
-        if (count > carsList.size()) {
-            return new ArrayList<>(carsList);
-        }
-        return new ArrayList<>(carsList.subList(0, count));
+
+        return carCount > carsList.size() ? new ArrayList<>(carsList) : new ArrayList<>(carsList.subList(0, carCount));
     }
 }
